@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        margin-top: 50px;
+        color: #fff;
+      }
+      .form-group-btn {
+        margin-bottom: 10px;
+      }
+      .container {
+        background: #333;
+        border: steelblue 1px;
+        width: 1000px;
+        height: 500px;
+        margin: auto;
+        padding-top: 50px;
+      }
+      #output {
+        margin-bottom: 15px;
+      }
+
+      .footer {
+        color: #333;
+        text-align: center;
+        margin-top: 50px;
+      }
+    </style>
+    <title>Weight Converter</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <h1 class="display-4 text-center mb-3">Weight Converter</h1>
+          <form>
+            <div class="form-group-btn text-center">
+              <button id="btnKg" class="btn btn-dark">Kilograms</button>
+              <button id="btnTon" class="btn btn-dark">Short Tons</button>
+              <button id="btnLbs" class="btn btn-dark">Pounds</button>
+              <button id="btnOz" class="btn btn-dark">Ounces</button>
+            </div>
+            <div class="form-group">
+              <input
+                id="kgInput"
+                type="number"
+                class="form-control form-control-lg"
+                placeholder=""
+              />
+            </div>
+          </form>
+          <div id="output">
+            <div class="card bg-primary mb-2">
+              <div class="card-block">
+                <h4 id="cardOne">Short Tons:</h4>
+                <div id="tonsOutput"></div>
+              </div>
+            </div>
+
+            <div class="card bg-success mb-2">
+              <div class="card-block">
+                <h4 id="cardTwo">Pounds:</h4>
+                <div id="lbsOutput"></div>
+              </div>
+            </div>
+
+            <div class="card bg-danger mb-2">
+              <div class="card-block">
+                <h4 id="cardThree">Ounces:</h4>
+                <div id="ozOutput"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <h4>
+        Discover Your <strong>BackgroundColor</strong> With
+        <strong>DoubleClick...</strong>
+      </h4>
+      <h5>All Page is Yours, Try Your Luck :)</h5>
+    </footer>
+
+    <script>
+      document.getElementById("output").style.visibility = "hidden";
+
+      const btnKg = document.getElementById("btnKg");
+      btnKg.addEventListener("click", changeKg);
+      function changeKg(e) {
+        e.preventDefault();
+        const kgHolder = document.getElementById("kgInput");
+        kgHolder.setAttribute("placeholder", "Enter Kilograms...");
+        document.getElementById("kgInput").value = "";
+        document.getElementById("output").style.visibility = "hidden";
+        document
+          .getElementById("kgInput")
+          .addEventListener("input", function (e) {
+            document.getElementById("output").style.visibility = "visible";
+            let kg = e.target.value;
+            document.getElementById("tonsOutput").innerHTML =
+              kg * 0.00110231131;
+            document.getElementById("lbsOutput").innerHTML = kg * 2.20462262;
+            document.getElementById("ozOutput").innerHTML = kg * 35.2739619;
+            document.getElementById("cardOne").innerHTML =
+              "<h4>Short Tons:</h4>";
+            document.getElementById("cardTwo").innerHTML = "<h4>Pounds:</h4>";
+            document.getElementById("cardThree").innerHTML = "<h4>Ounces:</h4>";
+          });
+      }
+
+      const btnTon = document.getElementById("btnTon");
+      btnTon.addEventListener("click", changeTon);
+      function changeTon(e) {
+        e.preventDefault();
+        const tonHolder = document.getElementById("kgInput");
+        tonHolder.setAttribute("placeholder", "Enter Short Tons...");
+        document.getElementById("kgInput").value = "";
+        document.getElementById("output").style.visibility = "hidden";
+        document
+          .getElementById("kgInput")
+          .addEventListener("input", function (e) {
+            document.getElementById("output").style.visibility = "visible";
+            let ton = e.target.value;
+            document.getElementById("tonsOutput").innerHTML = ton * 907.18474;
+            document.getElementById("lbsOutput").innerHTML = ton * 2000;
+            document.getElementById("ozOutput").innerHTML = ton * 32000;
+            document.getElementById("cardOne").innerHTML =
+              "<h4>Kilograms:</h4>";
+            document.getElementById("cardTwo").innerHTML = "<h4>Pounds:</h4>";
+            document.getElementById("cardThree").innerHTML = "<h4>Ounces:</h4>";
+          });
+      }
+
+      const btnLbs = document.getElementById("btnLbs");
+      btnLbs.addEventListener("click", changeLbs);
+      function changeLbs(e) {
+        e.preventDefault();
+        const lbsHolder = document.getElementById("kgInput");
+        lbsHolder.setAttribute("placeholder", "Enter Pounds...");
+        document.getElementById("kgInput").value = "";
+        document.getElementById("output").style.visibility = "hidden";
+        document
+          .getElementById("kgInput")
+          .addEventListener("input", function (e) {
+            document.getElementById("output").style.visibility = "visible";
+            let lbs = e.target.value;
+            document.getElementById("tonsOutput").innerHTML = lbs * 0.0005;
+            document.getElementById("lbsOutput").innerHTML = lbs * 0.45359237;
+            document.getElementById("ozOutput").innerHTML = lbs * 16;
+            document.getElementById("cardOne").innerHTML =
+              "<h4>Short Tons:</h4>";
+            document.getElementById("cardTwo").innerHTML =
+              "<h4>Kilograms:</h4>";
+            document.getElementById("cardThree").innerHTML = "<h4>Ounces:</h4>";
+          });
+      }
+
+      const btnOz = document.getElementById("btnOz");
+      btnOz.addEventListener("click", changeOz);
+      function changeOz(e) {
+        e.preventDefault();
+        const ozHolder = document.getElementById("kgInput");
+        ozHolder.setAttribute("placeholder", "Enter Ounces...");
+        document.getElementById("kgInput").value = "";
+        document.getElementById("output").style.visibility = "hidden";
+        document
+          .getElementById("kgInput")
+          .addEventListener("input", function (e) {
+            document.getElementById("output").style.visibility = "visible";
+            let oz = e.target.value;
+            document.getElementById("tonsOutput").innerHTML = oz / 32000;
+            document.getElementById("lbsOutput").innerHTML = oz * 0.0625;
+            document.getElementById("ozOutput").innerHTML = oz * 0.0283495231;
+            document.getElementById("cardOne").innerHTML =
+              "<h4>Short Tons:</h4>";
+            document.getElementById("cardTwo").innerHTML = "<h4>Pounds:</h4>";
+            document.getElementById("cardThree").innerHTML =
+              "<h4>Kilograms:</h4>";
+          });
+      }
+
+      addEventListener("dblclick", runEvent);
+
+      function runEvent(e) {
+        document.body.style.backgroundColor =
+          "rgb(" + e.offsetX + "," + e.offsetY + ", 40)";
+      }
+    </script>
+  </body>
+</html>
